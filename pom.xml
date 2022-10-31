@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>GuiD</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <arg>-verbose</arg>
+                        <arg>-Xlint:unchecked</arg>
+                        <arg>-Xlint:deprecation</arg>
+                        <arg>-bootclasspath</arg>
+                        <arg>${env.JAVA_HOME}/jre/lib/rt.jar</arg>
+                        <arg>-extdirs</arg>
+                        <arg>${project.basedir}/src/main/resources/bin</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>com.mtp.Window</mainClass>
+                    <addResources>true</addResources>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.intellij/forms_rt -->
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>forms_rt</artifactId>
+            <version>7.0.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.jgoodies/forms -->
+        <dependency>
+            <groupId>com.jgoodies</groupId>
+            <artifactId>forms</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>amf.serializer</groupId>
+            <artifactId>amf-serializer</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/bin/amf-serializer-1.0.0.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+</project>
